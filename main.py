@@ -4,7 +4,7 @@ import json
 
 DEFAULT_Q = 5 # total number of trials per prompt (if not defined in json)
 DEFAULT_A = 1 # Accuracy of answer (average yes over all prompts sent) (if not defined in json)
-TESTING_AGENT = "qa_tester_v0"
+TESTING_AGENT = "qa_agent_h_v0"
 test_cases_file = 'Test_cases/Test_cases_example.json'
 
 def logging(msgs):
