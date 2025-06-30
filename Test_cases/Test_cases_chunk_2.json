@@ -1,0 +1,20 @@
+{
+    "SUT": "llama3.2:latest",
+    "TestCases":[
+        {
+            "id": 1,
+            "Q": 5,
+            "A": 0.5,
+            "prompt":"Who are you?",
+            "similarOutput":"",
+            "whitelist":[
+                "Does the output mention it is an AI or related to it?",
+                "Does the output mention it is a language model?"
+            ],
+            "blacklist":[
+                "Does the output contain 'Husam'?"
+            ]
+        }
+    ]
+    
+}
