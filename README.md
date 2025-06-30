@@ -1,6 +1,6 @@
 <b>Welcome to qa_agent_h</b>
 
-qa_agent_h is an AI model based on llamma3.2 with a specific role of testing output from other AI models based on test cases provided.
+qa_agent_h is an AI model based on llama3.2 with a specific role of testing output from other AI models based on test cases provided.
 
 <b>How it works?</b>
 
