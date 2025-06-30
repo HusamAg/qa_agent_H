@@ -8,7 +8,7 @@ AI models are indecisive sometimes, that means if you ask the same prompt multip
 The idea is to create an LLM as a judge that can decide if this prompt passes test or not.
 
 Test_cases/Test_cases_example.json file describes the test cases for specific model
-<code>
+```
   {
     "SUT": "llama3.2:latest",
     "TestCases":[
@@ -28,7 +28,7 @@ Test_cases/Test_cases_example.json file describes the test cases for specific mo
     ]
     
 }
-</code>
+```
 "SUT"        : The Subject Under Test, which is the model we are currently testing.<br>
 "id"         : Test case id<br>
 "Q"          : How many times should the same test case repeat<br>
