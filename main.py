@@ -3,11 +3,9 @@ import json
 
 
 DEFAULT_Q = 5 # total number of trials per prompt (if not defined in json)
-DEFAILT_A = 1 # Accuracy of answer (average yes over all prompts sent) (if not defined in json)
-Q = DEFAULT_Q
-A = DEFAILT_A
+DEFAULT_A = 1 # Accuracy of answer (average yes over all prompts sent) (if not defined in json)
 TESTING_AGENT = "qa_tester_v0"
-test_cases_file = 'Test_cases/Test_cases_chunk_2.json'
+test_cases_file = 'Test_cases/Test_cases_example.json'
 
 def logging(msgs):
     print("-"*20)
@@ -18,7 +16,7 @@ def logging(msgs):
 
 def runTestCase(SUT, testCase):
     Q = DEFAULT_Q
-    A = DEFAILT_A
+    A = DEFAULT_A
     total_passed_cases = 0
     if "Q" in testCase:
         Q = testCase["Q"]
