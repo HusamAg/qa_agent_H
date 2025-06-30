@@ -29,10 +29,10 @@ Test_cases/Test_cases_example.json file describes the test cases for specific mo
     
 }
 </code>
-"SUT"        : The Subject Under Test, which is the model we are currently testing.\n
-"id"         : Test case id\n
-"Q"          : How many times should the same test case repeat\n
-"A"          : Acceptable accuracy of testing (total_pass_attempts / Q must be >= A)\n
-"prompt"     : The prompt to be tested (this will be executed on SUT)\n
-"whitelist"  : Whitelisted prompts that are required to pass in order to consider the test case passing (questions will be asked to qa_agent_h about the output of SUT)\n
-"blacklist"  : Blacklisted prompts that are required to fail in order to consider the test case passing (questions will be asked to qa_agent_h about the output of SUT)\n
+"SUT"        : The Subject Under Test, which is the model we are currently testing.<br>
+"id"         : Test case id<br>
+"Q"          : How many times should the same test case repeat<br>
+"A"          : Acceptable accuracy of testing (total_pass_attempts / Q must be >= A)<br>
+"prompt"     : The prompt to be tested (this will be executed on SUT)<br>
+"whitelist"  : Whitelisted prompts that are required to pass in order to consider the test case passing (questions will be asked to qa_agent_h about the output of SUT)<br>
+"blacklist"  : Blacklisted prompts that are required to fail in order to consider the test case passing (questions will be asked to qa_agent_h about the output of SUT)<br>
