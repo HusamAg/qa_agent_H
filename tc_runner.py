@@ -10,7 +10,7 @@ class TC_Runner:
         self.timesToRepeat = timesToRepeat
         self.acceptedAccuracy = acceptedAccuracy
         self.testCases = testCases
-        self.SUT = AUTAgent(AUT["model"], AUT["provider"])
+        self.AUT = AUTAgent(AUT["model"], AUT["provider"])
         self.testingAgent = TestingAgent(testingAgent["model"], testingAgent["provider"])
         self.testCasesOutput = {}
         self.validators = self.initValidators()
@@ -46,14 +46,14 @@ class TC_Runner:
         # run all validators in test case.
         for i in range(timesToRepeat):
             attemptStatus = True
-            sut_response = self.SUT.run_sync(test_case["prompt"])
+            aut = self.AUT.run_sync(test_case["prompt"])
             for validatorToRun in test_case["validators"]:
                 validatorFile, validatorClassName = validatorToRun["name"].split('.')
                 if validatorFile not in self.validators:
                     print(f"Validator {validatorToRun} not found!")
                     continue
                 validatorObj = getattr(self.validators[validatorFile], validatorClassName)()
-                validatorObj.setValidatorValues(self.testingAgent, sut_response.output, validatorToRun["data"])
+                validatorObj.setValidatorValues(self.testingAgent, aut.output, validatorToRun["data"])
                 validatorStatus = validatorObj.validate()
                 if not validatorStatus:
                     attemptStatus = False
