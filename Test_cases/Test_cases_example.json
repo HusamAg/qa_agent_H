@@ -1,9 +1,9 @@
 {
-    "SUT": {
+    "AUTAgent": {
         "model": "llama3.2:latest",
         "provider":"http://localhost:11434/v1"
     },
-    "TestingModel": {
+    "TestingAgent": {
         "model":"qa_agent_h_v0:latest",
         "provider":"http://localhost:11434/v1"
     },
@@ -11,8 +11,8 @@
         {
             "id": 1,
             "name": "Test Case 1",
-            "Q": 2,
-            "A": 0.5,
+            "timesToRepeat": 2,
+            "acceptedAccuracy": 0.5,
             "prompt":"Who are you?",
             "validators":[
                 {
@@ -23,7 +23,7 @@
                     ]
                 },
                 {
-                    "name":"blacklist_validator.blacklist",
+                    "name":"blacklist_validator.BlacklistValidator",
                     "data":[
                         "Does the output contain 'Husam'?"
                     ]

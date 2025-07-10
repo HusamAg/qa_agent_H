@@ -16,7 +16,7 @@ if __name__ == "__main__":
         print("No test cases provided!")
         sys.exit(1)
     # preparing tc_runner 
-    tc_runner = TC_Runner(test_cases_data["TestCases"], test_cases_data["SUT"], test_cases_data["TestingModel"])
+    tc_runner = TC_Runner(test_cases_data["TestCases"], test_cases_data["AUTAgent"], test_cases_data["TestingAgent"])
     tc_runner.run()
     tc_runner.printTestCasesOutput()
 

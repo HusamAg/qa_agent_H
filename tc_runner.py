@@ -2,15 +2,15 @@ import os
 import importlib.util
 import json
 
-from agents.sut_agent import SUTAgent
+from agents.aut_agent import AUTAgent
 from agents.testing_agent import TestingAgent
 
 class TC_Runner:
-    def __init__(self, testCases, SUT, testingAgent, Q=5, A=1):
-        self.Q = Q
-        self.A = A
+    def __init__(self, testCases, AUT, testingAgent, timesToRepeat=5, acceptedAccuracy=1):
+        self.timesToRepeat = timesToRepeat
+        self.acceptedAccuracy = acceptedAccuracy
         self.testCases = testCases
-        self.SUT = SUTAgent(SUT["model"], SUT["provider"])
+        self.SUT = AUTAgent(AUT["model"], AUT["provider"])
         self.testingAgent = TestingAgent(testingAgent["model"], testingAgent["provider"])
         self.testCasesOutput = {}
         self.validators = self.initValidators()
@@ -34,17 +34,17 @@ class TC_Runner:
         return validators
     
     def runTestCase(self, test_case):
-        if "Q" in test_case:
-            Q = test_case["Q"]
+        if "timesToRepeat" in test_case:
+            timesToRepeat = test_case["timesToRepeat"]
         else:
-            Q = self.Q
-        if "A" in test_case:
-            A = test_case["A"]
+            timesToRepeat = self.timesToRepeat
+        if "acceptedAccuracy" in test_case:
+            acceptedAccuracy = test_case["acceptedAccuracy"]
         else:
-            A = self.A
+            acceptedAccuracy = self.acceptedAccuracy
         totalPassedAttempts = 0
         # run all validators in test case.
-        for i in range(Q):
+        for i in range(timesToRepeat):
             attemptStatus = True
             sut_response = self.SUT.run_sync(test_case["prompt"])
             for validatorToRun in test_case["validators"]:
@@ -62,8 +62,8 @@ class TC_Runner:
                     break
             if attemptStatus:
                 totalPassedAttempts += 1
-        if totalPassedAttempts / Q < A:
-            print(f"Test case {test_case['name']} failed with accuracy {totalPassedAttempts / Q}")
+        if totalPassedAttempts / timesToRepeat < acceptedAccuracy:
+            print(f"Test case {test_case['name']} failed with accuracy {totalPassedAttempts / timesToRepeat}")
             return False
         return True
 

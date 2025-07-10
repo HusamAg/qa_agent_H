@@ -2,9 +2,9 @@ from abc import ABC, abstractmethod
 
 class ValidatorBase(ABC):
  
-    def setValidatorValues(self, testingAgent, SUT_Output, data):
+    def setValidatorValues(self, testingAgent, AUTOutput, data):
         self.testingAgent = testingAgent
-        self.SUT_Output = SUT_Output
+        self.AUTOutput = AUTOutput
         self.data = data
     
     @abstractmethod
