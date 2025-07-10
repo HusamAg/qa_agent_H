@@ -58,6 +58,7 @@ class TC_Runner:
                 if not validatorStatus:
                     attemptStatus = False
                     print(f"Validator {validatorToRun['name']} failed for test case {test_case['name']}")
+                    # add option to allow proceeding with next validator
                     break
             if attemptStatus:
                 totalPassedAttempts += 1

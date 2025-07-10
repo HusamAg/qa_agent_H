@@ -1,19 +1,11 @@
-from agents.testing_agent import TestingAgent
+from validators.validatorBase import ValidatorBase
 
-class WhitelistValidator:
-    def __init__(self):
-        pass
 
-    def setValidatorValues(self, testingAgent, SUT_Output, data):
-        self.testingAgent = testingAgent
-        self.SUT_Output = SUT_Output
-        self.data = data
-
+class WhitelistValidator (ValidatorBase):
+    
     def validate(self):
         print(f"Running WhitelistValidator with SUT Output: {self.SUT_Output}\n\ndata: {self.data}")
-        for testCaseQuestion in self.data:
-            wlPrompt = "providing the following answer from an AI model \"" + self.SUT_Output + "\". Answer This question: " + testCaseQuestion
-            testingAgentResponse = self.testingAgent.run_sync(wlPrompt)
-            if "No" in testingAgentResponse.output:
-                return False
-        return True
+        # update with pydantic
+        wlPrompt = "providing the following answer from an AI model \'" + self.SUT_Output + "\'. Answer these question in separated lines: " + " ".join(self.data)
+        testingAgentResponse = self.testingAgent.run_sync(wlPrompt)
+        return "No" not in testingAgentResponse.output.split("\n")
