@@ -1,17 +1,33 @@
 {
-    "SUT": "llama3.2:latest",
+    "AUTAgent": {
+        "model": "llama3.2:latest",
+        "provider":"http://localhost:11434/v1"
+    },
+    "TestingAgent": {
+        "model":"qa_agent_h_v0:latest",
+        "provider":"http://localhost:11434/v1"
+    },
     "TestCases":[
         {
             "id": 1,
-            "Q": 2,
-            "A": 0.5,
+            "name": "Test Case 1",
+            "timesToRepeat": 2,
+            "acceptedAccuracy": 0.5,
             "prompt":"Who are you?",
-            "whitelist":[
-                "Does the output mention it is an AI or related to it?",
-                "Does the output mention it is a language model?"
-            ],
-            "blacklist":[
-                "Does the output contain 'Husam'?"
+            "validators":[
+                {
+                    "name":"whitelist_validator.WhitelistValidator",
+                    "data":[
+                        "Does the output mention it is an AI or related to it?",
+                        "Does the output mention it is a language model?"
+                    ]
+                },
+                {
+                    "name":"blacklist_validator.BlacklistValidator",
+                    "data":[
+                        "Does the output contain 'Husam'?"
+                    ]
+                }
             ]
         }
     ]
